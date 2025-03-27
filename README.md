@@ -48,19 +48,21 @@ demo.ipynb: Lightweight demo with a small VLBI map
 Please provide the files as follows: Each map (.fits/.IMAP) in its own folder, so that you have a list with the path+file for each map as well as another list with only the path where each map is located.
 We strongly suggest only fitting maps from the same source automatically. This is because the same detection limit may not necessarily be appropriate for each source.
 
-### **Repository Structure**  
+### **Repository Structure** 
+```bash 
 vlbi-auto-photometry-tool/
-├── main/                   # Core Python module
+├── main/ 				    # Core Python module
 │   └── fit_components.py   # VLBI component fitting functions
-├── notebooks/              # Jupyter notebooks for demos and usage
+├── notebooks/ 			    # Jupyter notebooks for demos and usage
 │   ├── main_usage.ipynb    # Main usage
-│   └── demo.ipynb          # Demo
-├── data/                   # Sample VLBI maps for the demo (optional)
-│   └── sources/maps.fits   # Example files
-├── README.md               # Documentation
-├── LICENSE                 # License (MIT)
-├── requirements.txt        # Required Python packages
-└── .gitignore              # Ignored files
+│   └── demo.ipynb 		    # Demo
+├── data/ 				    # Sample VLBI maps for the demo (optional)
+│   └── sources/maps.fits 	# Example files
+├── README.md 		        # Documentation
+├── LICENSE 			    # License (MIT)
+├── requirements.txt 		# Required Python packages
+└── .gitignore 			    # Ignored files
+```
 
 ### **Citing This Work**
 If you use this software in your research, please cite:
