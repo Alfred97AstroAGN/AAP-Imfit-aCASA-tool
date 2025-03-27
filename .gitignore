@@ -1,0 +1,18 @@
+#ignore cache
+main/__pycache__/
+
+# Ignore .ipynb_checkpoints, logs and others files doesn't needed in all directories
+data/*/.ipynb_checkpoints/
+data/*/Fit_Summary.txt
+data/3C_454.3/Full_Maps/
+notebooks/.ipynb_checkpoints/
+notebooks/casa*.log
+
+
+# Ignore all files in specific 3C 279 directories except for the observed intensity VLBI map
+data/3C_279/*/*
+!data/3C_279/*/3C279*.IMAP
+
+# Ignore all files in specific 3C 454.3 directories except for the observed intensity VLBI map
+data/3C_454.3/*/*
+!data/3C_454.3/*/2251*.fits
