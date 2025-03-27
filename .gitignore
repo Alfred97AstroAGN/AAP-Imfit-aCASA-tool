@@ -1,5 +1,6 @@
 #ignore cache
 main/__pycache__/
+main/.ipynb_checkpoints/
 
 # Ignore .ipynb_checkpoints, logs and others files doesn't needed in all directories
 data/*/.ipynb_checkpoints/
