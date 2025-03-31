@@ -52,7 +52,7 @@ def map_properties(file):
     #Parameters:
     #    file (str): Path to the FITS file.
     #Returns:
-    #    tuple: Map data, pixel scale, increment, central pixel scale, peak flux, peak index, observation date in MJD, beam major/minor axes, and beam position angle.
+    #    tuple: Map data, pixel scale, increment, central pixel scale, peak flux, peak index, observation date in MJD, beam major/minor axes, beam position angle, and total flux from the map.
     
     hdul_map = fits.open(file) ; hdr_map = hdul_map[0].header
     map_data = hdul_map[0].data ; map_data = np.reshape(map_data,(hdr_map['NAXIS1'],hdr_map['NAXIS1']))
@@ -62,7 +62,11 @@ def map_properties(file):
     MJD = Time(hdr_map['DATE-OBS'],format='iso').mjd
     #Beam Size
     BMaj,BMin,BPA = hdr_map['BMAJ']*3600,hdr_map['BMIN']*3600,hdr_map['BPA']
-    return map_data,delta,increment,c_pix,f_peak,peak_id,MJD,BMaj,BMin,BPA
+    #Total flux (Sum pixels/Beam area)
+    cdelt1,cdelt2 = abs(hdr_map['CDELT1'])*3600,abs(hdr_map['CDELT2'])*3600
+    pix_area = cdelt1*cdelt2 ; beam_area = (math.pi*bmaj*bmin)/(4*math.log(2))/pix_area
+    f_total = np.sum(map_data)/beam_area
+    return map_data,delta,increment,c_pix,f_peak,peak_id,MJD,BMaj,BMin,BPA,f_total
 
 def detection_limit(treshold,file,map_data):
     #Computes the detection limit based on background noise in the map.
