@@ -1,12 +1,12 @@
-# Automatic Astrometry and Photometry Fitting for Intensity VLBI Maps   
+# Automatic Astrometry and Photometry Fitting for Intensity VLBI Maps (AAP-VLBI-Fit)
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)  
 ![License](https://img.shields.io/badge/License-MIT-green)  
 
-A Python-based tool for fitting components in Very Long Baseline Interferometry (VLBI) intensity maps. This package retrieves both **astrometry and photometry** for each fitted component, offering an approach distinct from traditional methods that focus solely on astrometry.  
+A Python-based tool for fitting Gaussian functions in Very Long Baseline Interferometry (VLBI) intensity maps. This routine retrieves both **astrometry and photometry** for each fitted component, offering an approach distinct from traditional methods that focus solely on astrometry.  
 
 This tool was developed as part of the research described in:  
-📄 **Amador, A. (2025), "Components Fitting in Intensity VLBI Maps," *Ark-Xiv*.** [DOI:]  
+📄 **Amador, A. (2025), "AAP-VLBI-Fit: Gaussian Fitting in Intensity VLBI Maps," *Ark-Xiv*.** [DOI:]  
 
 ---
 
@@ -50,7 +50,7 @@ We strongly suggest only fitting maps from the same source automatically. This i
 
 ### **Repository Structure** 
 ```bash 
-vlbi-auto-photometry-tool/
+aap-vlbi-fit-tool/
 ├── main/ 				    # Core Python module
 │   └── fit_components.py   # VLBI component fitting functions
 ├── notebooks/ 			    # Jupyter notebooks for demos and usage
@@ -66,7 +66,7 @@ vlbi-auto-photometry-tool/
 
 ### **Citing This Work**
 If you use this software in your research, please cite:
-📄 Amador-Portes et al., (2025b), "Components Fitting in Intensity VLBI Maps," Ark-Xiv. [DOI:]
+📄 Amador-Portes et al., (2025b), "AAP-VLBI-Fit: Gaussian Fitting in Intensity VLBI Maps," Ark-Xiv. [DOI:]
 Alternatively, you can use this BibTeX entry:
 @article{Amador2025,
 }
