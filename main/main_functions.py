@@ -1,6 +1,7 @@
 import os
 import numpy as np
 import pandas as pd
+import math
 import matplotlib ; import matplotlib.pyplot as plt ; import matplotlib as mpl ; from matplotlib import colors ; import matplotlib.patches as mpatches
 import matplotlib.ticker as ticker ; from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 import warnings
@@ -64,8 +65,8 @@ def map_properties(file):
     BMaj,BMin,BPA = hdr_map['BMAJ']*3600,hdr_map['BMIN']*3600,hdr_map['BPA']
     #Total flux (Sum pixels/Beam area)
     cdelt1,cdelt2 = abs(hdr_map['CDELT1'])*3600,abs(hdr_map['CDELT2'])*3600
-    pix_area = cdelt1*cdelt2 ; beam_area = (math.pi*bmaj*bmin)/(4*math.log(2))/pix_area
-    f_total = np.sum(map_data)/beam_area
+    pix_area = cdelt1*cdelt2 ; beam_area = (math.pi*BMaj*BMin)/(4*math.log(2))
+    f_total = np.sum(map_data)*(pix_area/beam_area)
     return map_data,delta,increment,c_pix,f_peak,peak_id,MJD,BMaj,BMin,BPA,f_total
 
 def detection_limit(treshold,file,map_data):
@@ -270,7 +271,7 @@ def ploting(folder,file,term,det_limit,increment,f_peak,BMaj,BMin,BPA):
     Fitted['eccen'] = np.sqrt(1-(b**2/a**2))
     Summary = (ascii.read(summmary,header_start=1)).to_pandas()
     properties = pd.DataFrame({'Integrated':Summary['I'],'IntErr':Summary['Ierr'],'Peak':Summary['Peak'],'PeakErr':Summary['PeakErr'],\
-                           'RAJ2000':Summary['RAJ2000'].apply(lambda x:x+360 if x<0 else x),'RAJ2000err':Summary['RAJ2000err'],'DecJ2000':Summary['DecJ2000'],'DecJ2000err':Summary['DecJ2000err'],\
+                           'RAJ2000':Summary['RAJ2000'].apply(lambda x:x+360 if x<0 else x),'DecJ2000':Summary['DecJ2000'],\
                            'Pos_X':Fitted['pix_x'],'Pos_Y':Fitted['pix_y'],'MajAx':Summary['ConMaj'],'MajAxErr':Summary['ConMajErr'],'MinAx':Summary['ConMin'],'MinAxErr':Summary['ConMinErr'],\
                            'Eccen':Fitted['eccen'],'PA':Summary['ConPA'],'ConPAErr':Summary['ConPAErr'],'Freq':Summary['Freq']})
     units = ['Jy','Jy','Jy/beam','Jy/beam','deg','arcsec','deg','arcsec','pixel','pixel','arcsec','arcsec','arcsec','arcsec','no_units','deg','deg','GHz'] ; headers = pd.DataFrame([units])
