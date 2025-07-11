@@ -66,7 +66,7 @@ aap-vlbi-fit-tool/
 
 ### **Citing This Work**
 If you use this software in your research, please cite:
-📄 Amador-Portes et al., (2025b), "AAP-VLBI-Fit: Gaussian Fitting in Intensity VLBI Maps," Ark-Xiv. [DOI:]
+📄 Amador-Portes et al., (2025b), "Automated Modeling with AAP-Imfit: Astrometry and Photometry via CASA," Ark-Xiv. [DOI:]
 Alternatively, you can use this BibTeX entry:
 @article{Amador2025,
 }
