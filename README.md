@@ -1,4 +1,4 @@
-# Automatic Astrometry and Photometry Fitting for Intensity VLBI Maps (AAP-VLBI-Fit)
+# Automatic Astrometry and Photometry Fitting using Imfit (AAP-Imfit)
 
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)  
 ![License](https://img.shields.io/badge/License-MIT-green)  
@@ -6,7 +6,7 @@
 A Python-based tool for fitting Gaussian functions in Very Long Baseline Interferometry (VLBI) intensity maps. This routine retrieves both **astrometry and photometry** for each fitted component, offering an approach distinct from traditional methods that focus solely on astrometry.  
 
 This tool was developed as part of the research described in:  
-📄 **Amador, A. (2025), "AAP-VLBI-Fit: Gaussian Fitting in Intensity VLBI Maps," *Ark-Xiv*.** [DOI:]  
+📄 **Amador, A. (2025), "Automatic Astrometry and Photometry with Imfit," *Ark-Xiv*.** [DOI:]  
 
 ---
 
