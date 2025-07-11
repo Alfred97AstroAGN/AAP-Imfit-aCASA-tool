@@ -129,7 +129,7 @@ def map_fitting(folder,file,f_peak,peak_id,BMaj,BMin,BPA,det_limit):
         term = 'Final'
     return count,term
 
-def map_cleaning(folder,file,count,det_limit,BMin,term):
+def map_cleaning(folder,file,count,det_limit,BMaj,BMin,term):
     #Performs post-fitting cleaning by filtering out bad components from the fitted VLBI model.
     #The cleaning is done based on the detection limit, eccentricity, and size of the components.
     #The approved final fit is directly stored into the directory without a proper return value.
@@ -149,13 +149,15 @@ def map_cleaning(folder,file,count,det_limit,BMin,term):
     Itera = (ascii.read(f'{folder}/iter{count}.txt', names=['fpeak','pix_x','pix_y','pix_a','pix_b','pix_p'])).to_pandas()
     b = Itera['pix_b'].apply(lambda x: float(x.split()[0])) ; a = Itera['pix_a'].apply(lambda x: float(x.split()[0]))
     ecc = np.sqrt(1-(b**2/a**2))
+    beam_area = np.pi*BMaj*BMin/(4*np.log(2))
+    gaussian_area = np.pi*a*b/(4 * np.log(2))
     if (Summary['Peak']<det_limit).any():
         print('There are components below Detection Limit')
     if (ecc >= 0.99).any():
         print('There are components with eccentricity above 0.99')
-    if (b <= BMin*0.9).any():
+    if (gaussian_area < 0.9*beam_area).any():
         print('There are components smaller than the beam')
-    if (Summary['Peak']<det_limit).any() or (ecc >= 0.99).any() or (b <= BMin*0.9).any():
+    if (Summary['Peak']<det_limit).any() or (ecc >= 0.99).any() or (gaussian_area < 0.9*beam_area).any():
         with open(f'{folder}/init_{term}.txt','w+') as outfile_final:
             for j in Summary.index:
                 if Summary['Peak'][j] >= det_limit and ecc[j] <= 0.99 and b[j] >= BMin*0.9:
