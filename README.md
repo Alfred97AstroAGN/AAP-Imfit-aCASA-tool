@@ -22,7 +22,7 @@ This tool was developed as part of the research described in:
 ## **Installation**  
 ### **1. Clone the Repository**  
 ```bash
-git clone https://github.com/your-username/vlbi-auto-photometry-tool.git
+git clone https://github.com/Alfred97AstroAGN/vlbi-auto-photometry-tool.git
 cd vlbi-auto-photometry-tool
 ```
 ### **2. Install Dependencies**  
@@ -31,7 +31,7 @@ pip install -r requirements.txt
 ```
 Or manually install:
 ```bash 
-pip install numpy astropy photutils matplotlib
+pip install numpy astropy photutils matplotlib, etc
 ```
 
 ### **Usage**  

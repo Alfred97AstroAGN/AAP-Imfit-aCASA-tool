@@ -281,8 +281,8 @@ def ploting(folder,file,term,det_limit,increment,f_peak,BMaj,BMin,BPA):
         headers.to_csv(editor,index=False,header=False,sep='\t') ; properties.to_csv(editor,index=False,sep='\t') 
     
     Text_xy = [int((map_data.shape[1]*10)/100),int((map_data.shape[0]*85)/100)]
-    Beam_xy = [int((map_data.shape[1]*85)/100),int((map_data.shape[0]*20)/100)]
-    BeamText_xy = [int((map_data.shape[1]*70)/100),int((map_data.shape[0]*12)/100)]
+    Beam_xy = [int((map_data.shape[1]*80)/100),int((map_data.shape[0]*20)/100)]
+    BeamText_xy = [int((map_data.shape[1]*65)/100),int((map_data.shape[0]*12)/100)]
     colormap = 'CMRmap_r'
     dynamic_colormap = matplotlib.colormaps['tab20'] ; num_colors = dynamic_colormap.N
     
@@ -306,7 +306,7 @@ def ploting(folder,file,term,det_limit,increment,f_peak,BMaj,BMin,BPA):
         
         beam = mpatches.Ellipse(xy=Beam_xy,width=(BMin*1000)/increment,height=(BMaj*1000)/increment,angle=BPA,edgecolor='black',fc='green',lw=1,alpha=0.8)
         axis.add_patch(beam)
-        axis.text(BeamText_xy[0],BeamText_xy[1],f'{BMin*1000:.2f} x {BMaj*1000:.2f} mas',fontsize=13)
+        axis.text(BeamText_xy[0],BeamText_xy[1],f'{BMin*1000:.2f} mas x {BMaj*1000:.2f} mas',fontsize=13)
         if w != 3:
             axis.contour(map_data if w != 2 else model_data,levels=levels,colors='black',alpha=0.8,linewidths=1.00)
         axis.text(Text_xy[0],Text_xy[1],Text_to_Plot[w-1])
