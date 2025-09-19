@@ -148,19 +148,21 @@ def map_cleaning(folder,file,count,det_limit,BMaj,BMin,term):
     Summary = (ascii.read(f'{folder}/sum{count}.txt',header_start=1)).to_pandas()
     Itera = (ascii.read(f'{folder}/iter{count}.txt', names=['fpeak','pix_x','pix_y','pix_a','pix_b','pix_p'])).to_pandas()
     b = Itera['pix_b'].apply(lambda x: float(x.split()[0])) ; a = Itera['pix_a'].apply(lambda x: float(x.split()[0]))
-    ecc = np.sqrt(1-(b**2/a**2))
+    beam_ratio = BMaj/BMin
+    gaussian_ratio = a/b
+    ecc_factor = 7
     beam_area = np.pi*BMaj*BMin/(4*np.log(2))
     gaussian_area = np.pi*a*b/(4 * np.log(2))
     if (Summary['Peak']<det_limit).any():
         print('There are components below Detection Limit')
-    if (ecc >= 0.99).any():
-        print('There are components with eccentricity above 0.99')
+    if (gaussian_ratio > ecc_factor*beam_ratio).any():
+        print('There are components with eccentricity greater than 3 times that of the beam')
     if (gaussian_area < 0.9*beam_area).any():
         print('There are components smaller than the beam')
-    if (Summary['Peak']<det_limit).any() or (ecc >= 0.99).any() or (gaussian_area < 0.9*beam_area).any():
+    if (Summary['Peak']<det_limit).any() or (gaussian_ratio > ecc_factor*beam_ratio).any() or (gaussian_area < 0.9*beam_area).any():
         with open(f'{folder}/init_{term}.txt','w+') as outfile_final:
             for j in Summary.index:
-                if Summary['Peak'][j] >= det_limit and ecc[j] <= 0.99 and b[j] >= BMin*0.9:
+                if Summary['Peak'][j] >= det_limit and gaussian_ratio[j] <= ecc_factor*beam_ratio and gaussian_area[j] >= 0.9*beam_area:
                     row = ',  '.join(Itera.iloc[j].astype(str).values)
                     outfile_final.write(row+'\n')
         casatasks.imfit(file,residual=f'{folder}/{term}_res.IMAP',model=f'{folder}/{term}_model.IMAP',estimates=f'{folder}/init_{term}.txt',logfile=f'{folder}/{term}_log.txt',append=False,newestimates=f'{folder}/{term}_iter.txt',summary=f'{folder}/{term}_sum.txt')

@@ -1,7 +1,7 @@
 MIT License
 Version 1, March 2025
 
-Copyright (c) [2025] [Amador-Portes Alfredo]
+Copyright (c) [2025] [Amador-Portes Alfredo, et al.]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
