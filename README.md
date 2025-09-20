@@ -22,8 +22,8 @@ This tool was developed as part of the research described in:
 ## **Installation**  
 ### **1. Clone the Repository**  
 ```bash
-git clone https://github.com/Alfred97AstroAGN/vlbi-auto-photometry-tool.git
-cd vlbi-auto-photometry-tool
+git clone https://github.com/Alfred97AstroAGN/AAP-Imfit-aCASA-tool.git
+cd AAP-Imfit-aCASA-tool
 ```
 ### **2. Install Dependencies**  
 ```bash
@@ -50,7 +50,7 @@ We strongly suggest only fitting maps from the same source automatically. This i
 
 ### **Repository Structure** 
 ```bash 
-aap-vlbi-fit-tool/
+AAP-Imfit-aCASA-tool/
 ├── main/ 				    # Core Python module
 │   └── fit_components.py   # VLBI component fitting functions
 ├── notebooks/ 			    # Jupyter notebooks for demos and usage
