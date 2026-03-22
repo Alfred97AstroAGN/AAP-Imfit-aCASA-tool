@@ -6,7 +6,7 @@
 A Python-based tool for fitting Gaussian functions in Very Long Baseline Interferometry (VLBI) intensity maps. This routine retrieves both **astrometry and photometry** for each fitted component, offering an approach distinct from traditional methods that focus solely on astrometry.  
 
 This tool was developed as part of the research described in:  
-📄 **Amador, A. (2025), "Automatic Astrometry and Photometry with Imfit," *Ark-Xiv*.** [DOI:]  
+📄 **Amador-Portes et al. (2025), "Automatic Astrometry and Photometry with Imfit," *ApJ*.** [DOI:10.3847/1538-4357/ae0ffd]  
 
 ---
 
@@ -66,9 +66,19 @@ AAP-Imfit-aCASA-tool/
 
 ### **Citing This Work**
 If you use this software in your research, please cite:
-📄 Amador-Portes et al., (2025b), "Automated Modeling with AAP-Imfit: Astrometry and Photometry via CASA," Ark-Xiv. [DOI:]
+📄 Amador-Portes et al., (2025), "Automated Modeling with AAP-Imfit: Astrometry and Photometry via CASA," ApJ, 994, 95. [DOI:10.3847/1538-4357/ae0ffd]
 Alternatively, you can use this BibTeX entry:
-@article{Amador2025,
+@ARTICLE{2025ApJ...994...95A,
+       author = {{Amador-Portes}, Alfredo and {Palafox}, Eva and {Pati{\~n}o-{\'A}lvarez}, V{\'\i}ctor M. and {Chavushyan}, Vahram and {Lobanov}, Andrei P. and {Dzib}, Sergio A.},
+        title = "{Automated Modeling with AAP-Imfit: Astrometry and Photometry via CASA}",
+      journal = {\apj},
+         year = 2025,
+        month = nov,
+       volume = {994},
+       number = {1},
+          eid = {95},
+        pages = {95},
+          doi = {10.3847/1538-4357/ae0ffd}
 }
 
 ### **License**
